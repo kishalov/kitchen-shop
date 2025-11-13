@@ -6,6 +6,7 @@ import ConsultationForm from "@/components/layout/ConsultationForm"
 export default function DesignerVisitSection() {
 	return (
 		<section className="section relative w-full overflow-hidden bg-transparent">
+			
 			{/* Background */}
 			<Image
 				src="/images/bg-kitchen.png"
@@ -16,61 +17,57 @@ export default function DesignerVisitSection() {
 			/>
 			<div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
 
-			{/* Content */}
-			<div className="relative z-10 col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-				{/* Left column */}
+			{/* LEFT COLUMN — 6 колонок */}
+			<div className="relative z-10 col-span-12 lg:col-span-6">
+				
+				<h2 className="sectionheading sectionheading-light">
+					Invite a{" "}
+					<span className="font-semibold text-white">measurement specialist</span>{" "}
+					for a free kitchen consultation
+				</h2>
+
+				<p className="smalltextwhite">
+					Our designer will visit your home, take precise measurements, help
+					with colour and layout choices, and provide professional advice.
+				</p>
+
+				<h3 className="text-white font-medium mb-6">
+					What the specialist will do:
+				</h3>
+
+				{/* Cards */}
 				<div className="relative">
-					<h2 className="sectionheading sectionheading-light">
-						Invite a{" "}
-						<span className="font-semibold text-white">
-							measurement specialist
-						</span>{" "}
-						for a free kitchen consultation
-					</h2>
-
-					<p className="smalltextwhite">
-						Our designer will visit your home, take precise measurements, help
-						with colour and layout choices, and provide professional advice. All
-						that’s left is signing the contract and waiting for your new kitchen.
-					</p>
-
-					<h3 className="text-white font-medium mb-6">
-						What the specialist will do:
-					</h3>
-
-					{/* Step-like cards */}
-					<div className="relative">
-						<div className="absolute left-0 top-0">
-							<CheckCard text="Explain how to make the best use of your kitchen space" />
-						</div>
-						<div className="absolute left-10 top-24">
-							<CheckCard text="Show material samples and help choose your kitchen design" />
-						</div>
-						<div className="absolute left-0 top-48">
-							<CheckCard text="Take accurate measurements of your kitchen" />
-						</div>
-						<div className="h-[300px]" />
+					<div className="absolute left-0 top-0">
+						<CheckCard text="Explain how to make the best use of your kitchen space" />
 					</div>
-
-					{/* Badge */}
-					<div className="absolute -bottom-15 left-[60%] hidden sm:flex items-center gap-5 bg-[#ffdb7c] rounded-full px-5 py-2 shadow-2xl/10 w-fit z-20 whitespace-nowrap">
-						<p className="text-sm font-medium text-[#2b2b2b]">David Miller</p>
-						<span className="text-sm text-[#2b2b2b]/80">
-							Measurement Specialist
-						</span>
+					<div className="absolute left-10 top-24">
+						<CheckCard text="Show material samples and help choose your kitchen design" />
 					</div>
+					<div className="absolute left-0 top-48">
+						<CheckCard text="Take accurate measurements of your kitchen" />
+					</div>
+					<div className="h-[300px]" />
 				</div>
 
-				{/* Right column — reusable form */}
+				{/* Badge */}
+				<div className="absolute -bottom-15 left-[60%] hidden sm:flex items-center gap-5 bg-[#ffdb7c] rounded-full px-5 py-2 shadow-2xl/10 w-fit z-20 whitespace-nowrap">
+					<p className="text-sm font-medium text-[#2b2b2b]">David Miller</p>
+					<span className="text-sm text-[#2b2b2b]/80">Measurement Specialist</span>
+				</div>
+			</div>
+
+			{/* RIGHT COLUMN — форма */}
+			<div className="relative z-10 col-span-12 lg:col-span-6 flex justify-center lg:justify-end">
 				<ConsultationForm
 					title="Book your free consultation"
 					subtitle="We’ll call you back within 15 minutes"
 					buttonText="Get a consultation"
+					className="max-w-md w-full"
 				/>
 			</div>
 
 			{/* Specialist image */}
-			<div className="absolute bottom-0 left-[35%] w-[600px] hidden lg:block">
+			<div className="absolute bottom-0 left-[32%] w-[600px] hidden lg:block">
 				<Image
 					src="/images/des.png"
 					alt="Measurement specialist"
@@ -84,8 +81,6 @@ export default function DesignerVisitSection() {
 	)
 }
 
-/* --------------------- */
-/* Check Card — статичная, без hover */
 /* --------------------- */
 function CheckCard({ text }: { text: string }) {
 	return (

@@ -58,9 +58,9 @@ export default function ProjectsCarousel() {
 			<div className="max-w-6xl mx-auto">
 				{/* Heading */}
 				<h2 className="mainheading">
-					In <span className="font-bold">2021</span> we built not just{" "}
+					In 2021 we built not just{" "}
 					<span className="font-bold">376 kitchens</span> — we created{" "}
-					<span className="font-bold">personal comfort</span> for{" "}
+					personal comfort for{" "}
 					<span className="font-bold">376 families.</span>
 				</h2>
 				<p className="maintext">

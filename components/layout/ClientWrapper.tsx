@@ -14,6 +14,7 @@ import GuaranteesSection from "@/components/sections/GuaranteesSection"
 import StepsSection from "@/components/sections/StepsSection"
 import DesignerVisitSection from "@/components/sections/DesignerVisitSection"
 import MapSection from "@/components/sections/MapSection"
+import FooterSection from "@/components/sections/FooterSection"
 
 export default function ClientWrapper({ children }: { children?: React.ReactNode }) {
 	return (
@@ -34,6 +35,7 @@ export default function ClientWrapper({ children }: { children?: React.ReactNode
 					<StepsSection />
 					<DesignerVisitSection />
 					<MapSection />
+					<FooterSection />
 					{children}
 				</main>
 			</ModalProvider>

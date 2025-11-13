@@ -30,7 +30,13 @@ export default function ConsultationForm({
 
 	return (
 		<div
-			className={`card bg-white/95 backdrop-blur-md border-0 shadow-2xl/10 max-w-md ml-auto ${className}`}
+			className={`
+				bg-white/95 backdrop-blur-md border-0 shadow-2xl/10 
+				rounded-3xl
+				p-6 md:p-8                /* уменьшенные отступы */
+				max-w-full
+				${className}
+			`}
 		>
 			<h3 className="text-lg md:text-xl font-semibold mb-2 text-[#2b2b2b]">
 				{title}
@@ -53,7 +59,14 @@ export default function ConsultationForm({
 
 				<Button
 					type="submit"
-					className="mt-2 bg-[#ffb700] hover:bg-[#ffcc33] text-black font-medium rounded-xl py-3 transition-colors duration-150"
+					className="
+						mt-2 bg-[#ffb700] hover:bg-[#ffcc33]
+						text-black font-medium 
+						rounded-xl 
+						py-3.5 md:py-4       /* компактная кнопка */
+						text-base md:text-lg  /* адаптивный текст */
+						transition-colors duration-150
+					"
 				>
 					{buttonText}
 				</Button>

@@ -18,7 +18,7 @@ export default function StepsSection() {
 			<div className="steps-grid col-span-12">
 
 				{/* Step 1 */}
-				<Card className="step-1 bg-[#1a1a1a] text-white flex flex-col justify-start rounded-2xl p-8 shadow-lg relative">
+				<Card className="step-1 bg-[#1a1a1a] text-white flex flex-col justify-start rounded-2xl pt-6 pb-4 px-8 shadow-lg relative">
 					<CardContent className="p-0 relative z-10 flex flex-col h-full justify-start">
 						<div>
 							<h3 className="font-bold text-xl mb-3">Request a Measurement</h3>
@@ -28,7 +28,7 @@ export default function StepsSection() {
 						</div>
 						<Button
 							onClick={openModal}
-							className="text-black font-semibold text-lg rounded-xl px-25 py-1 mt-6 self-start"
+							className="text-black font-medium text-lg rounded-xl px-24 py-5 mt-6 self-start text-center whitespace-nowrap"
 							>
 							Book a visit
 						</Button>

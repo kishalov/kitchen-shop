@@ -54,21 +54,22 @@ export default function GuaranteesSection() {
 					</div>
 
 					{/* Правая часть — документ + кнопка */}
-					<div className="relative flex flex-col items-center justify-end h-full">
+					<div className="relative rounded-2xl flex flex-col items-center justify-end h-full">
 						<Image
 							src="/images/contract221.png"
 							alt="Official Contract"
 							width={700}
 							height={700}
-							className="object-contain translate-y-10"
+							className="object-contain rounded-2xl translate-y-10"
 							priority
 						/>
 
 						<Button
 							className="
 								mt-16 text-black font-medium
-								rounded-xl px-60 py-10 text-lg shadow-md
+								rounded-xl px-47.5 py-10 text-lg shadow-md
 								max-md:px-10 max-md:py-4 max-md:text-base
+								text-center whitespace-nowrap
 							"
 						>
 							Download Contract
