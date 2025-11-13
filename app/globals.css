@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+	--font-sans: var(--font-clash-grotesk), system-ui, sans-serif;
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+}
+
+/* ------------------ */
+/* Секции и сетка */
+/* ------------------ */
+
+.section {
+	@apply grid grid-cols-12 items-center gap-6 
+		py-16 sm:py-24 md:py-30 
+		px-5 sm:px-10 lg:px-40 xl:px-80;
+}
+
+/* ------------------ */
+/* Заголовки и текст */
+/* ------------------ */
+
+.mainheading {@apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-5;}
+
+.maintext {@apply text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-gray-600 mb-5 leading-relaxed;}
+
+.subheading {@apply text-xs sm:text-sm md:text-base uppercase tracking-widest text-gray-600 mb-5;}
+
+/* ------------------ */
+/* Карточки и второстепенный текст */
+/* ------------------ */
+
+.card {@apply bg-white rounded-4xl 
+		p-5 sm:p-8 md:p-10 lg:p-12 
+		shadow-2xl/10 max-w-full;}
+
+.smalltext {@apply text-gray-600 text-base sm:text-lg leading-relaxed mb-5;}
+
+.smalltextwhite {@apply text-white/90 text-base sm:text-lg leading-relaxed mb-5;}
+
+.sectionheading {@apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-snug mb-4 max-w-lg;}
+
+.sectionheading-dark {@apply text-[#2b2b2b];}
+
+.sectionheading-light {@apply text-white;}
+
+.cardtext {@apply text-sm md:text-base text-[#2b2b2b] font-medium leading-snug;}
+
+@layer components {
+	.steps-grid {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-auto-rows: 260px;
+		gap: 1.5rem;
+
+		grid-template-areas:
+			"a a a a b b b b b b b b"
+			"c c c c c c d d d d d d"
+			"e e e e f f f f f f f f";
+	}
+
+	.step-1 { grid-area: a; }
+	.step-2 { grid-area: b; }
+	.step-3 { grid-area: c; }
+	.step-4 { grid-area: d; }
+	.step-5 { grid-area: e; }
+	.step-6 { grid-area: f; }
+
+	@media (max-width: 1024px) {
+		.steps-grid {
+			grid-template-columns: 1fr;
+			grid-auto-rows: auto;
+			grid-template-areas:
+				"a"
+				"b"
+				"c"
+				"d"
+				"e"
+				"f";
+			gap: 1.25rem;
+		}
+	}
+}
