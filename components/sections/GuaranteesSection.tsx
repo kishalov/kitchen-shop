@@ -4,21 +4,25 @@ import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Container from "@/components/layout/Container"
+import { useModal } from "@/components/sections/ModalProvider"
 
 export default function GuaranteesSection() {
+	const { openModal } = useModal()
 	return (
 		<section className="relative w-full bg-white py-24 px-6 overflow-hidden">
 			<Container>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+					
 					{/* Левая часть */}
 					<div>
 						<h2 className="sectionheading sectionheading-dark">
 							When working with us,{" "}
-							<span className="font-semibold text-black">
+							<span className="font-semibold text-[#ffb700]">
 								you get 3 guarantees
 							</span>{" "}
 							— all secured in an official contract
 						</h2>
+
 						<p className="smalltext">
 							You can feel confident about the timing and quality of your future
 							kitchen.
@@ -34,6 +38,7 @@ export default function GuaranteesSection() {
 								text="Every process — from measurements to the final screw — is carried out with precision craftsmanship."
 								size="medium"
 							/>
+
 							<GuaranteeCard
 								bg="bg-[#1a1a1a] text-white"
 								shadow="shadow-lg"
@@ -42,6 +47,7 @@ export default function GuaranteesSection() {
 								text="The price will not change — it remains exactly as stated in your signed contract."
 								size="large"
 							/>
+
 							<GuaranteeCard
 								bg="bg-[#ffdb7c]"
 								shadow="shadow-md"
@@ -60,21 +66,24 @@ export default function GuaranteesSection() {
 							alt="Official Contract"
 							width={700}
 							height={700}
-							className="object-contain rounded-2xl translate-y-10"
+							className="object-contain rounded-2xl translate-y-10 w-full h-auto"
 							priority
 						/>
 
 						<Button
+							onClick={openModal}
 							className="
+								w-full
 								mt-16 text-black font-medium
-								rounded-xl px-47.5 py-10 text-lg shadow-md
-								max-md:px-10 max-md:py-4 max-md:text-base
+								rounded-xl py-10 text-lg shadow-md
+								max-md:py-4 max-md:text-base
 								text-center whitespace-nowrap
 							"
 						>
 							Download Contract
 						</Button>
 					</div>
+
 				</div>
 			</Container>
 		</section>
@@ -96,7 +105,6 @@ function GuaranteeCard({
 	shadow?: string
 	size?: "small" | "medium" | "large"
 }) {
-	// размеры иконок в зависимости от типа карточки
 	const sizeClasses =
 		size === "large"
 			? "w-28 h-28 md:w-32 md:h-32"
@@ -106,8 +114,15 @@ function GuaranteeCard({
 
 	return (
 		<Card className={`${bg} ${shadow} border-0 rounded-2xl p-6`}>
-			<CardContent className="p-0 flex items-center gap-6">
-				{/* Иконка слева */}
+			<CardContent
+				className="
+					p-0
+					flex flex-col sm:flex-row
+					items-center sm:items-center
+					text-center sm:text-left
+					gap-4 sm:gap-6
+				"
+			>
 				<div className={`relative shrink-0 ${sizeClasses}`}>
 					<Image
 						src={image}
@@ -118,10 +133,13 @@ function GuaranteeCard({
 					/>
 				</div>
 
-				{/* Текст справа */}
 				<div>
-					<h3 className="font-semibold text-lg mb-1 leading-tight">{title}</h3>
-					<p className="text-sm text-current/80 leading-relaxed">{text}</p>
+					<h3 className="font-semibold text-lg mb-1 leading-tight">
+						{title}
+					</h3>
+					<p className="text-sm text-current/80 leading-relaxed">
+						{text}
+					</p>
 				</div>
 			</CardContent>
 		</Card>

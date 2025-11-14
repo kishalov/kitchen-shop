@@ -38,9 +38,9 @@ export default function MapSection() {
 
 							<h2 className="sectionheading sectionheading-dark">
 								Would you like to{" "}
-								<span className="font-semibold text-black">see our materials</span>{" "}
+								<span className="font-semibold text-[#ffb700]">see our materials</span>{" "}
 								and explore{" "}
-								<span className="font-semibold text-black">real kitchen samples</span>{" "}
+								<span className="font-semibold text-[#ffb700]">real kitchen samples</span>{" "}
 								in person?
 							</h2>
 

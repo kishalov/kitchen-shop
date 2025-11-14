@@ -22,7 +22,7 @@ export default function DesignerVisitSection() {
 				
 				<h2 className="sectionheading sectionheading-light">
 					Invite a{" "}
-					<span className="font-semibold text-white">measurement specialist</span>{" "}
+					<span className="font-semibold text-[#ffb700]">measurement specialist</span>{" "}
 					for a free kitchen consultation
 				</h2>
 

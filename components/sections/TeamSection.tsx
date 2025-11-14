@@ -12,13 +12,13 @@ const team = [
 
 export default function TeamSection() {
 	return (
-		<section className="section bg-[#fbcc57] text-center">
+		<section className="section bg-[#282828] text-center">
 			{/* Заголовок */}
 			<div className="col-span-12">
-				<h2 className="mainheading leading-tight text-[#2b2b2b] mb-16">
+				<h2 className="mainheading leading-tight text-[#ffff] mb-16">
 					Delivering{" "}
-					<span className="font-semibold text-black">flawless quality</span> and{" "}
-					<span className="font-semibold text-black">excellent service</span> is only possible
+					<span className="font-bold text-[#ffb700]">flawless quality</span> and{" "}
+					<span className="font-bold text-[#ffb700]">excellent service</span> is only possible
 					with the right people on the team.
 				</h2>
 			</div>

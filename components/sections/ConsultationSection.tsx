@@ -14,16 +14,16 @@ export default function ConsultationSection() {
 				className="object-cover object-center"
 				priority
 			/>
-			<div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
+			<div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
 			{/* Контент в 12 колонок (используем .section) */}
 			{/* Левая часть */}
 			<div className="relative col-span-12 lg:col-span-6">
-				<h2 className="sectionheading sectionheading-dark">
+				<h2 className="sectionheading sectionheading-light">
 					Would you like a kitchen that’s{" "}
-					<span className="font-semibold text-black">comfortable to cook in</span>{" "}
+					<span className="font-semibold text-[#ffb700]">comfortable to cook in</span>{" "}
 					and where{" "}
-					<span className="font-semibold text-black">
+					<span className="font-semibold text-[#ffb700]">
 						every detail has its perfect place?
 					</span>
 				</h2>

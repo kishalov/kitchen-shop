@@ -11,8 +11,8 @@ export default function StepsSection() {
 	return (
 		<section className="section bg-white">
 			<h2 className="mainheading col-span-12 text-center">
-				Only <span className="font-semibold text-black">5 steps</span> — and your brand new kitchen will be ready in just{" "}
-				<span className="font-semibold text-black">14 days</span>
+				Only <span className="font-semibold text-[#ffb700]">5 steps</span> — and your brand new kitchen will be ready in just{" "}
+				<span className="font-semibold text-[#ffb700]">14 days</span>
 			</h2>
 
 			<div className="steps-grid col-span-12">

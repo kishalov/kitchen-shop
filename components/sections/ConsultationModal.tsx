@@ -43,7 +43,7 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 
 				<form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
 					<Input
-						placeholder="Your name"
+						placeholder="Enter your name"
 						value={form.name}
 						onChange={(e) => setForm({ ...form, name: e.target.value })}
 						className="py-3"

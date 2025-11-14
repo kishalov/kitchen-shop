@@ -9,7 +9,7 @@ export default function FooterSection() {
 		<footer className="w-full bg-[#fffaf3] border-t border-gray-200 py-6">
 			<Container className="flex justify-between items-center">
 				
-				{/* ЛОГО — как в хедере */}
+				{/* ЛОГО */}
 				<div className="flex items-center gap-2 sm:gap-3">
 					<Image
 						src="/images/logo.svg"
@@ -20,11 +20,11 @@ export default function FooterSection() {
 					/>
 				</div>
 
-				{/* Контакты справа — как в хедере, только без текста "Contact us" */}
+				{/* Контакты справа */}
 				<div className="flex items-center gap-4 sm:gap-6 md:gap-8">
 
-					{/* Иконки */}
-					<div className="flex items-center gap-2 sm:gap-3">
+					{/* Иконки — скрываем на мобильных */}
+					<div className="hidden sm:flex items-center gap-2 sm:gap-3">
 						<Link href="https://wa.me/88007076462" target="_blank">
 							<Image
 								src="/images/social/waicon.svg"
@@ -43,15 +43,20 @@ export default function FooterSection() {
 								className="hover:scale-105 transition-transform"
 							/>
 						</Link>
-
 					</div>
 
-					{/* Номер — точно как в хедере */}
+					{/* Номер телефона */}
 					<div className="text-right">
-						<p className="font-bold text-[#2b2b2b] text-sm sm:text-base md:text-lg leading-tight">
+						<p className="
+							font-bold text-[#2b2b2b]
+							text-xs sm:text-sm md:text-lg
+							max-[360px]:text-[11px]
+							leading-tight
+						">
 							+27 (800) 707-64-62
 						</p>
-						<p className="text-xs sm:text-sm text-[#707070]">
+
+						<p className="text-[10px] sm:text-sm text-[#707070]">
 							Daily from 9:00 to 18:00
 						</p>
 					</div>

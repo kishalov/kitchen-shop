@@ -1,21 +1,32 @@
 "use client"
 
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import { CardContent } from "@/components/ui/card"
 
 export default function FounderCard() {
 	return (
 		<section className="section bg-gray-50 py-16 md:py-20">
-			<div className="card col-span-12 relative grid md:grid-cols-2 overflow-hidden p-0">
-				
-				{/* Левая часть — текст */}
-				<CardContent className="relative z-10 flex flex-col justify-center p-6 md:p-12">
+			
+			<div className="card-no-padding relative overflow-hidden col-span-12 grid md:grid-cols-2">
+
+				{/* Текст */}
+				<CardContent
+					className="
+						relative z-10 flex flex-col justify-center
+						pt-8 pb-2
+						sm:pt-10 sm:pb-10
+						md:pt-12 md:pb-12
+						lg:pt-16 lg:pb-14
+						pl-5 sm:pl-8 md:pl-10 lg:pl-12
+						pr-5 sm:pr-8 md:pr-10 lg:pr-12
+					"
+				>
 					<p className="subheading">
 						We take pride in creating furniture that will serve you for years to come.
 					</p>
 
 					<h2 className="mainheading">
-						Hello, we are KitchenShop
+						Hello, we are <span className="font-semibold text-[#ffb700]">KitchenShop</span> 
 					</h2>
 
 					<p className="maintext">
@@ -36,16 +47,17 @@ export default function FounderCard() {
 					</p>
 				</CardContent>
 
-				{/* Правая часть — изображение */}
+				{/* Картинка */}
 				<div className="relative md:absolute md:inset-y-0 md:right-0 md:w-1/2 w-full h-[300px] md:h-auto">
 					<Image
 						src="/images/features/kitchencard.png"
 						alt="Modern kitchen"
 						fill
-						className="object-cover object-[0%_center]"
+						className="object-cover"
 						priority
 					/>
 				</div>
+
 			</div>
 		</section>
 	)
