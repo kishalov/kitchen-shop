@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 		type: "website",
 		images: [
 			{
-				url: "/images/og/kitchen-shop-og.png",
+				url: "/images/og/kitchen-shop-og2.png",
 				width: 1200,
 				height: 630,
 				alt: "Kitchen Shop — modern custom kitchen example",
