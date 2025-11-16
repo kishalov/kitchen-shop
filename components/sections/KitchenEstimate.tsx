@@ -28,7 +28,6 @@ export default function KitchenEstimate() {
         </p>
 
         <Button
-          size="lg"
           className="mt-10 rounded-xl bg-[#ffb700] hover:bg-[#ffcc33] text-black font-medium shadow-md transition-all"
         >
           Пройти опрос

@@ -5,7 +5,6 @@ import { ModalProvider } from "@/components/sections/ModalProvider"
 
 import Header from "@/components/sections/Header"
 import Hero from "@/components/sections/Hero"
-import KitchenEstimate from "@/components/sections/KitchenEstimate"
 import FounderCard from "@/components/sections/FounderCard"
 import TeamSection from "@/components/sections/TeamSection"
 import ConsultationSection from "@/components/sections/ConsultationSection"
