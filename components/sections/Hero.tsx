@@ -8,7 +8,7 @@ export default function Hero() {
 
 	return (
 		<section
-			className="section h-lvh bg-cover bg-center"
+			className="section min-h-screen bg-cover bg-center" 
 			style={{ backgroundImage: "url('/images/kitchenexample.png')" }}
 		>
 			<div className="card col-span-12 lg:col-span-9 xl:col-span-10">

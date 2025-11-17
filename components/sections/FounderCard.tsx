@@ -26,7 +26,7 @@ export default function FounderCard() {
 					</p>
 
 					<h2 className="mainheading">
-						Hello, we are <span className="font-semibold text-[#ffb700]">KitchenShop</span> 
+						Hello, we are <span className="font-semibold text-[#ffb700]">KitchenShop</span>
 					</h2>
 
 					<p className="maintext">
