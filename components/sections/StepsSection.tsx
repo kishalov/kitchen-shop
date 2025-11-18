@@ -28,7 +28,11 @@ export default function StepsSection() {
 						</div>
 						<Button
 							onClick={openModal}
-							className="text-black font-medium text-lg rounded-xl px-24 py-5 mt-6 self-start text-center whitespace-nowrap"
+							className="w-full
+										mt-6
+										text-black font-medium text-lg
+										rounded-xl py-5
+										text-center"
 							>
 							Book a visit
 						</Button>

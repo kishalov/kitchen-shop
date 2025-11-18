@@ -21,12 +21,11 @@
 /* Заголовки и текст */
 /* ------------------ */
 
-/* FIXED FOR RESPONSIVE MID-SIZE */
 .mainheading {
 	@apply 
 		text-3xl
 		sm:text-4xl
-		md:text-4xl     /* важно! уменьшили именно посредине */
+		md:text-4xl
 		lg:text-5xl
 		xl:text-6xl
 		font-semibold 
@@ -74,16 +73,21 @@
 }
 
 /* ------------------ */
-/* Steps grid (как было) */
+/* Steps grid — FIXED + ADAPTIVE */
 /* ------------------ */
 
 @layer components {
+
 	.steps-grid {
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
-		grid-auto-rows: 260px;
+
+		/* 🔥 теперь строки растягиваются */
+		grid-auto-rows: minmax(260px, auto);
+
 		gap: 1.5rem;
 
+		/* 🔥 Desktop (исходный макет) */
 		grid-template-areas:
 			"a a a a b b b b b b b b"
 			"c c c c c c d d d d d d"
@@ -97,6 +101,23 @@
 	.step-5 { grid-area: e; }
 	.step-6 { grid-area: f; }
 
+	/* -------------------------------------------------- */
+	/* 🔥 Новый адаптивный брейкпоинт (фикс кнопки)
+	   Меняем пропорции 4/8 → 5/7 примерно на 1500px */
+	/* -------------------------------------------------- */
+
+	@media (max-width: 1500px) {
+		.steps-grid {
+			grid-template-areas:
+				"a a a a a b b b b b b b"
+				"c c c c c c d d d d d d"
+				"e e e e e f f f f f f f";
+		}
+	}
+
+	/* -------------------------------------------------- */
+	/* Мобильный стэк (как было) */
+	/* -------------------------------------------------- */
 	@media (max-width: 1024px) {
 		.steps-grid {
 			grid-template-columns: 1fr;
