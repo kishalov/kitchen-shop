@@ -10,7 +10,12 @@ import { cn } from "@/lib/utils"
    КНОПКА СО СТАРОЙ АНИМАЦИЕЙ
 -------------------------- */
 
-function ArrowButton({ className, children, ...props }) {
+type ArrowButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+	className?: string
+	children?: React.ReactNode
+}
+
+function ArrowButton({ className, children, ...props }: ArrowButtonProps) {
 	const MotionButton = motion.button as any
 
 	return (
@@ -19,8 +24,8 @@ function ArrowButton({ className, children, ...props }) {
 			whileTap={{ scale: 0.9 }}
 			className={cn(
 				"flex items-center justify-center rounded-full",
-				"w-12 h-12", // круг кнопка
-				"bg-[#ffe28a] hover:bg-[#ffd43b]", // тускло-жёлтая → яркая
+				"w-12 h-12",
+				"bg-[#ffe28a] hover:bg-[#ffd43b]",
 				"transition-colors duration-200 cursor-pointer shadow-md",
 				"disabled:opacity-50 disabled:pointer-events-none",
 				className
@@ -41,6 +46,8 @@ type CarouselProps = {
 	plugins?: Parameters<typeof useEmblaCarousel>[1]
 	orientation?: "horizontal" | "vertical"
 	setApi?: (api: any) => void
+	className?: string
+	children?: React.ReactNode
 }
 
 type CarouselContextType = {
@@ -73,7 +80,7 @@ export function Carousel({
 	className,
 	children,
 	...props
-}: React.ComponentProps<"div"> & CarouselProps) {
+}: CarouselProps) {
 	const [carouselRef, api] = useEmblaCarousel(
 		{ ...opts, axis: orientation === "horizontal" ? "x" : "y" },
 		plugins
@@ -127,7 +134,11 @@ export function Carousel({
       ВНУТРЕННИЕ ЭЛЕМЕНТЫ
 -------------------------- */
 
-export function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
+export function CarouselContent({
+	className,
+	children,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) {
 	const { carouselRef, orientation } = useCarousel()
 
 	return (
@@ -139,12 +150,18 @@ export function CarouselContent({ className, ...props }: React.ComponentProps<"d
 					className
 				)}
 				{...props}
-			/>
+			>
+				{children}
+			</div>
 		</div>
 	)
 }
 
-export function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
+export function CarouselItem({
+	className,
+	children,
+	...props
+}: React.HTMLAttributes<HTMLDivElement>) {
 	const { orientation } = useCarousel()
 
 	return (
@@ -157,7 +174,9 @@ export function CarouselItem({ className, ...props }: React.ComponentProps<"div"
 				className
 			)}
 			{...props}
-		/>
+		>
+			{children}
+		</div>
 	)
 }
 
@@ -165,8 +184,11 @@ export function CarouselItem({ className, ...props }: React.ComponentProps<"div"
       СТРЕЛКА НАЗАД
 -------------------------- */
 
-export function CarouselPrevious({ className, ...props }) {
-	const { scrollPrev, canScrollPrev, orientation } = useCarousel()
+export function CarouselPrevious({
+	className,
+	...props
+}: ArrowButtonProps) {
+	const { scrollPrev, canScrollPrev } = useCarousel()
 
 	return (
 		<ArrowButton
@@ -188,8 +210,11 @@ export function CarouselPrevious({ className, ...props }) {
       СТРЕЛКА ВПЕРЁД
 -------------------------- */
 
-export function CarouselNext({ className, ...props }) {
-	const { scrollNext, canScrollNext, orientation } = useCarousel()
+export function CarouselNext({
+	className,
+	...props
+}: ArrowButtonProps) {
+	const { scrollNext, canScrollNext } = useCarousel()
 
 	return (
 		<ArrowButton
