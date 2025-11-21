@@ -66,7 +66,7 @@ export default function GuaranteesSection() {
 							alt="Official Contract"
 							width={700}
 							height={700}
-							className="object-contain rounded-2xl translate-y-10 w-full h-auto"
+							className="object-contain rounded-2xl w-full h-auto translate-y-1 md:translate-y-10"
 							priority
 						/>
 
@@ -74,7 +74,8 @@ export default function GuaranteesSection() {
 							onClick={openModal}
 							className="
 								w-full
-								mt-16 text-black font-medium
+								mt-6
+								md:mt-16 text-black font-medium
 								rounded-xl py-10 text-lg shadow-md
 								max-md:py-4 max-md:text-base
 								text-center whitespace-nowrap

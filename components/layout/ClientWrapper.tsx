@@ -3,7 +3,6 @@
 import Script from "next/script"
 import { ModalProvider } from "@/components/sections/ModalProvider"
 
-import Header from "@/components/sections/Header"
 import Hero from "@/components/sections/Hero"
 import FounderCard from "@/components/sections/FounderCard"
 import TeamSection from "@/components/sections/TeamSection"
@@ -24,7 +23,6 @@ export default function ClientWrapper({ children }: { children?: React.ReactNode
 			/>
 			<ModalProvider>
 				<main>
-					<Header />
 					<Hero />
 					<FounderCard />
 					<TeamSection />

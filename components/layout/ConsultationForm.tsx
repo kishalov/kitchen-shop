@@ -49,7 +49,14 @@ export default function ConsultationForm({
 					placeholder="Enter your name"
 					value={form.name}
 					onChange={(e) => setForm({ ...form, name: e.target.value })}
-					className="py-3"
+					className="py-6 px-4 
+		rounded-lg 
+		border border-gray-300 
+		text-gray-800 
+		focus:border-[#ffb700] 
+		focus:ring-2 focus:ring-[#ffb700]/40 
+		outline-none 
+		transition-all"
 				/>
 
 				<PhoneInputField

@@ -29,7 +29,7 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 				onOpenAutoFocus={(e) => e.preventDefault()}
 				className="border-0 bg-white rounded-2xl shadow-xl p-6 sm:p-8 max-w-sm w-[90%] mx-auto text-center"
 			>
-				<DialogHeader className="mb-4">
+				<DialogHeader className="mb-2">
 					<DialogTitle className="text-2xl font-bold text-[#2b2b2b] text-center">
 						Book your free consultation
 					</DialogTitle>
@@ -46,7 +46,14 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 						placeholder="Enter your name"
 						value={form.name}
 						onChange={(e) => setForm({ ...form, name: e.target.value })}
-						className="py-3"
+						className="py-6 px-4 
+								rounded-lg 
+								border border-gray-300 
+								text-gray-800 
+								focus:border-[#ffb700] 
+								focus:ring-2 focus:ring-[#ffb700]/40 
+								outline-none 
+								transition-all"
 					/>
 
 					<PhoneInputField

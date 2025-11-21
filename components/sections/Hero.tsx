@@ -1,5 +1,7 @@
 "use client"
 
+
+import Header from "./Header"
 import { Button } from "@/components/ui/button"
 import { useModal } from "@/components/sections/ModalProvider"
 
@@ -11,6 +13,7 @@ export default function Hero() {
 			className="section min-h-screen bg-cover bg-center" 
 			style={{ backgroundImage: "url('/images/kitchenexample.png')" }}
 		>
+<Header />
 			<div className="card col-span-12 lg:col-span-9 xl:col-span-10">
 				<p className="subheading">
 					We design and install custom kitchens across South Africa

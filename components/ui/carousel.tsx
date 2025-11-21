@@ -2,10 +2,39 @@
 
 import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react"
+import * as motion from "motion/react-client"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+
+/* -------------------------
+   КНОПКА СО СТАРОЙ АНИМАЦИЕЙ
+-------------------------- */
+
+function ArrowButton({ className, children, ...props }) {
+	const MotionButton = motion.button as any
+
+	return (
+		<MotionButton
+			whileHover={{ scale: 1.1, rotate: -2 }}
+			whileTap={{ scale: 0.9 }}
+			className={cn(
+				"flex items-center justify-center rounded-full",
+				"w-12 h-12", // круг кнопка
+				"bg-[#ffe28a] hover:bg-[#ffd43b]", // тускло-жёлтая → яркая
+				"transition-colors duration-200 cursor-pointer shadow-md",
+				"disabled:opacity-50 disabled:pointer-events-none",
+				className
+			)}
+			{...props}
+		>
+			{children}
+		</MotionButton>
+	)
+}
+
+/* -------------------------
+      КОНТЕКСТ КАРУСЕЛИ
+-------------------------- */
 
 type CarouselProps = {
 	opts?: Parameters<typeof useEmblaCarousel>[0]
@@ -31,6 +60,10 @@ export function useCarousel() {
 	if (!ctx) throw new Error("useCarousel must be used within <Carousel />")
 	return ctx
 }
+
+/* -------------------------
+          ROOT
+-------------------------- */
 
 export function Carousel({
 	opts,
@@ -90,10 +123,11 @@ export function Carousel({
 	)
 }
 
-export function CarouselContent({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
+/* -------------------------
+      ВНУТРЕННИЕ ЭЛЕМЕНТЫ
+-------------------------- */
+
+export function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 	const { carouselRef, orientation } = useCarousel()
 
 	return (
@@ -110,10 +144,7 @@ export function CarouselContent({
 	)
 }
 
-export function CarouselItem({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
+export function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 	const { orientation } = useCarousel()
 
 	return (
@@ -130,54 +161,48 @@ export function CarouselItem({
 	)
 }
 
-export function CarouselPrevious({
-	className,
-	...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+/* -------------------------
+      СТРЕЛКА НАЗАД
+-------------------------- */
+
+export function CarouselPrevious({ className, ...props }) {
 	const { scrollPrev, canScrollPrev, orientation } = useCarousel()
 
 	return (
-		<Button
+		<ArrowButton
 			disabled={!canScrollPrev}
 			onClick={scrollPrev}
 			className={cn(
-				// стиль кнопки
-				"flex items-center justify-center rounded-full shadow-md text-black",
-				"w-12 h-12 bg-[#ffe28a] hover:bg-[#ffd43b]",
-				// позиция
-				orientation === "horizontal"
-					? "absolute top-1/2 -translate-y-1/2 -left-12"
-					: "absolute -top-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute top-1/2 -translate-y-1/2",
+				"-left-5 md:-left-10",
 				className
 			)}
 			{...props}
 		>
-			<ArrowLeft className="w-6 h-6" />
-		</Button>
+			<ArrowLeft className="w-6 h-6 stroke-black" />
+		</ArrowButton>
 	)
 }
 
-export function CarouselNext({
-	className,
-	...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+/* -------------------------
+      СТРЕЛКА ВПЕРЁД
+-------------------------- */
+
+export function CarouselNext({ className, ...props }) {
 	const { scrollNext, canScrollNext, orientation } = useCarousel()
 
 	return (
-		<Button
+		<ArrowButton
 			disabled={!canScrollNext}
 			onClick={scrollNext}
 			className={cn(
-				"flex items-center justify-center rounded-full shadow-md text-black",
-				"w-12 h-12 bg-[#ffe28a] hover:bg-[#ffd43b]",
-				orientation === "horizontal"
-					? "absolute top-1/2 -translate-y-1/2 -right-12"
-					: "absolute -bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute top-1/2 -translate-y-1/2",
+				"-right-5 md:-right-10",
 				className
 			)}
 			{...props}
 		>
-			<ArrowRight className="w-6 h-6" />
-		</Button>
+			<ArrowRight className="w-6 h-6 stroke-black" />
+		</ArrowButton>
 	)
 }

@@ -36,21 +36,21 @@ export default function DesignerVisitSection() {
 				</h3>
 
 				{/* Cards */}
-				<div className="relative">
-					<div className="absolute left-0 top-0">
+				<div className="relative space-y-4 lg:space-y-0">
+					<div className="relative lg:absolute lg:left-0 lg:top-0">
 						<CheckCard text="Explain how to make the best use of your kitchen space" />
 					</div>
-					<div className="absolute left-10 top-24">
+					<div className="relative lg:absolute lg:left-10 lg:top-24">
 						<CheckCard text="Show material samples and help choose your kitchen design" />
 					</div>
-					<div className="absolute left-0 top-48">
+					<div className="relative lg:absolute lg:left-0 lg:top-48">
 						<CheckCard text="Take accurate measurements of your kitchen" />
 					</div>
-					<div className="h-[300px]" />
+					<div className="h-0 lg:h-[300px]" />
 				</div>
 
 				{/* Badge */}
-				<div className="absolute -bottom-15 left-[60%] hidden sm:flex items-center gap-5 bg-[#ffdb7c] rounded-full px-5 py-2 shadow-2xl/10 w-fit z-20 whitespace-nowrap">
+				<div className="absolute -bottom-15 left-[60%] hidden lg:flex items-center gap-5 bg-[#ffdb7c] rounded-full px-5 py-2 shadow-2xl/10 w-fit z-20 whitespace-nowrap">
 					<p className="text-sm font-medium text-[#2b2b2b]">David Miller</p>
 					<span className="text-sm text-[#2b2b2b]/80">Measurement Specialist</span>
 				</div>
@@ -84,7 +84,7 @@ export default function DesignerVisitSection() {
 /* --------------------- */
 function CheckCard({ text }: { text: string }) {
 	return (
-		<div className="flex items-center gap-4 bg-white rounded-xl shadow-2xl/10 px-5 py-3 w-fit max-w-md">
+		<div className="flex items-center gap-4 bg-white rounded-xl shadow-2xl/10 px-5 py-3 w-full max-w-md lg:w-fit">
 			<div className="flex items-center justify-center bg-[#ffb700] w-8 h-8 rounded-full shrink-0">
 				<span className="text-white text-lg font-bold">✓</span>
 			</div>

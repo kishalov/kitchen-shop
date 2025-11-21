@@ -6,13 +6,13 @@ import Container from "@/components/layout/Container"
 
 export default function Header() {
 	return (
-		<header className="fixed top-0 left-0 w-full z-50 bg-transparent py-3 sm:py-4 backdrop-blur-sm">
+		<header className="absolute top-0 left-0 w-full z-50 bg-transparent py-3 sm:py-4 backdrop-blur-sm">
 			<Container className="flex justify-between items-center">
 				{/* Логотип */}
 				<div className="flex items-center gap-2 sm:gap-3">
 					<Image
 						src="/images/logo.svg"
-						alt="Империя Кухонь"
+						alt="KitchenShop"
 						width={150}
 						height={150}
 						className="object-contain w-[130px] sm:w-[150px] md:w-[170px] h-auto"
