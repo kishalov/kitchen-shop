@@ -27,10 +27,10 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 	const [error, setError] = useState(false)
 
 	/* --------------------------------
-	         ОТПРАВКА В TELEGRAM
+	         ОТПРАВКА В API /lead
 	-------------------------------- */
-	async function sendToTelegram(name: string, phone: string) {
-		const res = await fetch("/api/telegram", {
+	async function sendLead(name: string, phone: string) {
+		const res = await fetch("/api/lead", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ name, phone }),
@@ -58,7 +58,7 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 
 		setLoading(true)
 
-		const ok = await sendToTelegram(form.name, form.phone)
+		const ok = await sendLead(form.name, form.phone)
 
 		setLoading(false)
 

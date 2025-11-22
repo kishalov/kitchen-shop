@@ -28,10 +28,10 @@ export default function ConsultationForm({
 	const [error, setError] = useState(false)
 
 	/* -------------------------------
-	      ФУНКЦИЯ ОТПРАВКИ В TG
+	         ОТПРАВКА В API /lead
 	-------------------------------- */
-	async function sendToTelegram(name: string, phone: string) {
-		const res = await fetch("/api/telegram", {
+	async function sendLead(name: string, phone: string) {
+		const res = await fetch("/api/lead", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ name, phone }),
@@ -47,11 +47,10 @@ export default function ConsultationForm({
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 
-		// сброс статусов
 		setSuccess(false)
 		setError(false)
 
-		// базовая валидация
+		// Валидация телефона
 		const phoneDigits = form.phone.replace(/\D/g, "")
 		if (!form.name.trim() || phoneDigits.length < 10) {
 			setError(true)
@@ -60,7 +59,7 @@ export default function ConsultationForm({
 
 		setLoading(true)
 
-		const ok = await sendToTelegram(form.name, form.phone)
+		const ok = await sendLead(form.name, form.phone)
 
 		setLoading(false)
 
