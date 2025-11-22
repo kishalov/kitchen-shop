@@ -1,7 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import PhoneInputField from "@/components/layout/PhoneInputField"
@@ -17,10 +22,55 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 		phone: "",
 	})
 
-	function handleSubmit(e: React.FormEvent) {
+	const [loading, setLoading] = useState(false)
+	const [success, setSuccess] = useState(false)
+	const [error, setError] = useState(false)
+
+	/* --------------------------------
+	         ОТПРАВКА В TELEGRAM
+	-------------------------------- */
+	async function sendToTelegram(name: string, phone: string) {
+		const res = await fetch("/api/telegram", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ name, phone }),
+		})
+
+		const data = await res.json()
+		return data.ok
+	}
+
+	/* --------------------------------
+	                SUBMIT
+	-------------------------------- */
+	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		console.log(form)
-		onOpenChange(false)
+
+		setSuccess(false)
+		setError(false)
+
+		// базовая валидация
+		const phoneDigits = form.phone.replace(/\D/g, "")
+		if (!form.name.trim() || phoneDigits.length < 10) {
+			setError(true)
+			return
+		}
+
+		setLoading(true)
+
+		const ok = await sendToTelegram(form.name, form.phone)
+
+		setLoading(false)
+
+		if (ok) {
+			setSuccess(true)
+			setForm({ name: "", phone: "" })
+
+			// красивое закрытие модалки после успешной отправки
+			setTimeout(() => onOpenChange(false), 400)
+		} else {
+			setError(true)
+		}
 	}
 
 	return (
@@ -46,14 +96,11 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 						placeholder="Enter your name"
 						value={form.name}
 						onChange={(e) => setForm({ ...form, name: e.target.value })}
-						className="py-6 px-4 
-								rounded-lg 
-								border border-gray-300 
-								text-gray-800 
-								focus:border-[#ffb700] 
-								focus:ring-2 focus:ring-[#ffb700]/40 
-								outline-none 
-								transition-all"
+						className={`py-6 px-4 rounded-lg border 
+							${error && !form.name.trim() ? "border-red-500" : "border-gray-300"}
+							text-gray-800 focus:border-[#ffb700] 
+							focus:ring-2 focus:ring-[#ffb700]/40 
+							outline-none transition-all`}
 					/>
 
 					<PhoneInputField
@@ -61,7 +108,32 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 						onChange={(v) => setForm({ ...form, phone: v || "" })}
 					/>
 
-					<Button>Get a consultation</Button>
+					<Button
+						type="submit"
+						disabled={loading}
+						className="
+							mt-2 bg-[#ffb700] hover:bg-[#ffcc33]
+							text-black font-medium 
+							rounded-xl 
+							py-3.5 md:py-4
+							text-base md:text-lg
+							transition-colors duration-150
+						"
+					>
+						{loading ? "Sending..." : "Get a consultation"}
+					</Button>
+
+					{success && (
+						<p className="text-green-600 text-sm">
+							Request sent successfully!
+						</p>
+					)}
+
+					{error && (
+						<p className="text-red-600 text-sm">
+							Please fill in your name and phone number correctly.
+						</p>
+					)}
 				</form>
 			</DialogContent>
 		</Dialog>
