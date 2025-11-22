@@ -28,7 +28,7 @@ export default function ConsultationForm({
 	const [error, setError] = useState(false)
 
 	/* -------------------------------
-	         ОТПРАВКА В API /lead
+	         SEND LEAD TO API
 	-------------------------------- */
 	async function sendLead(name: string, phone: string) {
 		const res = await fetch("/api/lead", {
@@ -42,7 +42,7 @@ export default function ConsultationForm({
 	}
 
 	/* -------------------------------
-	         SUBMIT FORM
+	             SUBMIT
 	-------------------------------- */
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
@@ -50,9 +50,9 @@ export default function ConsultationForm({
 		setSuccess(false)
 		setError(false)
 
-		// Валидация телефона
-		const phoneDigits = form.phone.replace(/\D/g, "")
-		if (!form.name.trim() || phoneDigits.length < 10) {
+		// мягкая валидация (исправленная)
+		const digits = form.phone.replace(/\D/g, "")
+		if (!form.name.trim() || digits.length < 10) {
 			setError(true)
 			return
 		}
@@ -75,9 +75,7 @@ export default function ConsultationForm({
 		<div
 			className={`
 				bg-white/95 backdrop-blur-md border-0 shadow-2xl/10 
-				rounded-3xl
-				p-6 md:p-8
-				max-w-full
+				rounded-3xl p-6 md:p-8 max-w-full
 				${className}
 			`}
 		>
@@ -93,7 +91,7 @@ export default function ConsultationForm({
 					value={form.name}
 					onChange={(e) => setForm({ ...form, name: e.target.value })}
 					className={`py-6 px-4 rounded-lg border 
-					    ${error && !form.name.trim() ? "border-red-500" : "border-gray-300"}
+						${error && !form.name.trim() ? "border-red-500" : "border-gray-300"}
 						text-gray-800 focus:border-[#ffb700] 
 						focus:ring-2 focus:ring-[#ffb700]/40 
 						outline-none transition-all`}
@@ -101,7 +99,7 @@ export default function ConsultationForm({
 
 				<PhoneInputField
 					value={form.phone}
-					onChange={(v) => setForm({ ...form, phone: v || "" })}
+					onChange={(v) => setForm({ ...form, phone: v })}
 				/>
 
 				<Button
@@ -109,10 +107,8 @@ export default function ConsultationForm({
 					disabled={loading}
 					className="
 						mt-2 bg-[#ffb700] hover:bg-[#ffcc33]
-						text-black font-medium 
-						rounded-xl 
-						py-3.5 md:py-4
-						text-base md:text-lg  
+						text-black font-medium rounded-xl 
+						py-3.5 md:py-4 text-base md:text-lg  
 						transition-colors duration-150
 					"
 				>

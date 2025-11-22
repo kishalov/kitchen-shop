@@ -6,7 +6,10 @@ export async function POST(req: Request) {
 		const { name, phone } = await req.json()
 
 		if (!name || !phone) {
-			return NextResponse.json({ ok: false, error: "Missing fields" }, { status: 400 })
+			return NextResponse.json(
+				{ ok: false, error: "Missing fields" },
+				{ status: 400 }
+			)
 		}
 
 		/* -----------------------------------
@@ -23,7 +26,8 @@ export async function POST(req: Request) {
 		const sheets = google.sheets({ version: "v4", auth })
 
 		await sheets.spreadsheets.values.append({
-			spreadsheetId: process.env.GOOGLE_SHEETS_ID!,
+			// 🔥 ПРАВИЛЬНАЯ ПЕРЕМЕННАЯ
+			spreadsheetId: process.env.GOOGLE_SHEETS_SPREADSHEET_ID!,
 			range: "A1",
 			valueInputOption: "USER_ENTERED",
 			requestBody: {
@@ -59,6 +63,7 @@ export async function POST(req: Request) {
 		             SUCCESS
 		----------------------------------- */
 		return NextResponse.json({ ok: true })
+
 	} catch (err) {
 		console.error("LEAD API ERROR:", err)
 		return NextResponse.json({ ok: false }, { status: 500 })

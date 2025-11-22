@@ -27,7 +27,7 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 	const [error, setError] = useState(false)
 
 	/* --------------------------------
-	         ОТПРАВКА В API /lead
+	         SEND LEAD TO API
 	-------------------------------- */
 	async function sendLead(name: string, phone: string) {
 		const res = await fetch("/api/lead", {
@@ -49,9 +49,9 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 		setSuccess(false)
 		setError(false)
 
-		// базовая валидация
-		const phoneDigits = form.phone.replace(/\D/g, "")
-		if (!form.name.trim() || phoneDigits.length < 10) {
+		// мягкая валидация
+		const digits = form.phone.replace(/\D/g, "")
+		if (!form.name.trim() || digits.length < 10) {
 			setError(true)
 			return
 		}
@@ -66,7 +66,6 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 			setSuccess(true)
 			setForm({ name: "", phone: "" })
 
-			// красивое закрытие модалки после успешной отправки
 			setTimeout(() => onOpenChange(false), 400)
 		} else {
 			setError(true)
@@ -105,7 +104,7 @@ export default function ConsultationModal({ open, onOpenChange }: Props) {
 
 					<PhoneInputField
 						value={form.phone}
-						onChange={(v) => setForm({ ...form, phone: v || "" })}
+						onChange={(v) => setForm({ ...form, phone: v })}
 					/>
 
 					<Button
